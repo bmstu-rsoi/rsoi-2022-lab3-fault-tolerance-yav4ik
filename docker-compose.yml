@@ -14,7 +14,34 @@ services:
     ports:
       - "5432:5432"
 
-# TODO добавить сервисы
+  gateway:
+    build: src/gateway/
+    container_name: gateway
+    restart: on-failure
+    ports:
+      - "8080:8080"
+
+  flight:
+    build: src/flight/
+    container_name: flight
+    restart: on-failure
+    ports:
+      - "8060:8060"
+
+  privilege:
+    build: src/privilege/
+    container_name: privilege
+    restart: on-failure
+    ports:
+      - "8050:8050"
+
+  ticket:
+    build: src/ticket/
+    container_name: ticket
+    restart: on-failure
+    ports:
+      - "8070:8070"
+
 
 volumes:
   db-data:
