@@ -12,10 +12,8 @@ back_bonuses_queue = Queue()
 
 def task():
     if back_bonuses_queue.empty():
-        print("queue empty")
+        pass
     else:
-        print("queue nottttttttttt empty")
-        print(back_bonuses_queue.qsize())
         status = 503
         n = 0
         while not (status == 200 or n == 1):
@@ -23,8 +21,7 @@ def task():
                 req = requests.get(url=f"http://{privilege_ip}:8050/manage/health")
                 status = req.status_code
             except:
-                print(1)
-            n += 1
+                n += 1
 
         if status == 200:
             while not back_bonuses_queue.empty() and status == 200:
@@ -63,7 +60,7 @@ ticket_ip = "ticket"
 # Получить список всех перелетов
 @app.route('/manage/health', methods=["GET"])
 def health():
-    return make_response(200)
+    return {}, 200
 
 
 @app.route('/api/v1/flights', methods=["GET"])
