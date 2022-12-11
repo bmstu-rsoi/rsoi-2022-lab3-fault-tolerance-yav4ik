@@ -270,7 +270,8 @@ def post_ticket():
         if status_ticket == 400:
             return "Ошибка валидации данных", 400
         else:
-            return "Bonus Service unavailable", 503
+            # "Bonus Service unavailable"
+            return {"message": "Bonus Service unavailable"}, 503
     json_ticket = json_ticket
 
     priv_json_send = {
@@ -290,8 +291,9 @@ def post_ticket():
         pass
 
     if status_privil != 200:
-        requests.delete(f'http://{ticket_ip}:8070/api/v1/tickets/delete/<user_login>/<ticketUid>')
-        return {}, 503
+        print(2)
+        requests.delete(f'http://{ticket_ip}:8070/api/v1/tickets/delete/{user}/{json_ticket["ticketUid"]}')
+        return {"message": "Bonus Service unavailable"}, 503
 
     json_privil = json_privil
 
@@ -338,7 +340,8 @@ def get_privilege():
     elif status_privilege == 404:
         return "Привелегии не найдены", 404
     else:
-        return "Bonus Service unavailable", 503
+        # Bonus Service unavailable
+        return {"message": "Bonus Service unavailable"}, 503
 
 
 @app.route(f"/api/v1/flights/<ticketUid>", methods=["GET"])

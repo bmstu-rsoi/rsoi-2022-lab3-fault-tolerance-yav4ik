@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify, make_response
 app = Flask(__name__)
 
 gateway_ip = "gateway"
-#gateway_ip = "localhost"
+# gateway_ip = "localhost"
 
 @app.route('/manage/health', methods=["GET"])
 def health():
