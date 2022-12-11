@@ -356,4 +356,4 @@ def get_flight_byticket(ticketUid: str):
 
 if __name__ == '__main__':
     app.run(port=8080, debug=False)
-    #atexit.register(lambda: scheduler.shutdown())
+    atexit.register(lambda: scheduler.shutdown())
