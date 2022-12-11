@@ -63,7 +63,7 @@ ticket_ip = "ticket"
 # Получить список всех перелетов
 @app.route('/manage/health', methods=["GET"])
 def health():
-    return {}, 200
+    return make_response(200)
 
 
 @app.route('/api/v1/flights', methods=["GET"])
