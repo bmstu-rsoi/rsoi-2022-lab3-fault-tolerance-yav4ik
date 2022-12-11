@@ -125,13 +125,13 @@ def get_person():
     elif ticket_status != 200:
         user_info = {
             "tickets": json_ticket,
-            "privilege": "fallback"
+            "privilege": []
         }
         return user_info, 200
 
     elif privilege_status != 200:
         user_info = {
-            "tickets": "fallback",
+            "tickets": [],
             "privilege": json_privilege
         }
         return user_info, 200
@@ -270,7 +270,7 @@ def post_ticket():
         if status_ticket == 400:
             return "Ошибка валидации данных", 400
         else:
-            return {}, 503
+            return "Bonus Service unavailable", 503
     json_ticket = json_ticket
 
     priv_json_send = {
@@ -338,7 +338,7 @@ def get_privilege():
     elif status_privilege == 404:
         return "Привелегии не найдены", 404
     else:
-        return {}, 503
+        return "Bonus Service unavailable", 503
 
 
 @app.route(f"/api/v1/flights/<ticketUid>", methods=["GET"])
