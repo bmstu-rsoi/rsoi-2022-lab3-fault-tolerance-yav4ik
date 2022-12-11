@@ -44,6 +44,7 @@ scheduler.start()
 flights_ip = "flight"
 privilege_ip = "privilege"
 ticket_ip = "ticket"
+
 # flights_ip = "localhost"
 # privilege_ip = "localhost"
 # ticket_ip = "localhost"
