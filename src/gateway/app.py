@@ -69,6 +69,7 @@ def get_flights():
     size = request.args.get("size")
 
     flight_status = 503
+    json_flight = {}
     try:
         flight_response = requests.get(url=f"http://{flights_ip}:8060/api/v1/flights?page={page}&size={size}")
         flight_status = flight_response.status_code

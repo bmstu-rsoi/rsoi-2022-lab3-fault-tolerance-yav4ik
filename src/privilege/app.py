@@ -22,18 +22,21 @@ def get_base_privilege(user: str):
 
 @app.route('/api/v1/privileges/<user>', methods=["GET"])
 def get_all_privilege(user: str):
+    print(user)
     privilegedb = Privilegedb()
     privilege, history = privilegedb.get_all_privilege(user)
-    if privilege and history:
+    print(privilege)
+    if privilege:
         json_history = []
-        for i in history:
-            histor = {
-                "date": i[0],
-                "ticketUid": i[1],
-                "balanceDiff": i[2],
-                "operationType": i[3]
-            }
-            json_history.append(histor)
+        if history:
+            for i in history:
+                histor = {
+                    "date": i[0],
+                    "ticketUid": i[1],
+                    "balanceDiff": i[2],
+                    "operationType": i[3]
+                }
+                json_history.append(histor)
 
         json_privilege = {
             "balance": privilege[1],

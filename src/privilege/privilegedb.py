@@ -61,7 +61,7 @@ class Privilegedb:
         a = self.cursor.fetchone()
         if not a:
             self.cursor.execute(f"INSERT INTO privilege (id, username, status, balance) "
-                                f"VALUES (DEFAULT, 'Test Max', DEFAULT, 0);")
+                                f"VALUES (DEFAULT, 'Test Max', DEFAULT, 150);")
             self.db.commit()
         return
 
