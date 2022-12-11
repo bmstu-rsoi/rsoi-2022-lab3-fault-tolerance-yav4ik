@@ -9,7 +9,7 @@ app = Flask(__name__)
 gateway_ip = "gateway"
 #gateway_ip = "localhost"
 
-@app.route('/manage/healths', methods=["GET"])
+@app.route('/manage/health', methods=["GET"])
 def health():
     return {}, 200
 
